@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles/home.css'%}"> 
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div>
+                <h2>Home</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'createPostPage' %}">CREATE POST</a></li>
+                <li><a href="/logout/">LOGOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="insta-post">
+    {% for post in posts %}
+    <div class="instagram-card">
+            <div class="post-title">
+               <h4>{{ post.title }}</h4>
+               <p>{{ post.content }}</p>
+            </div>
+
+            <div class="post-img-vid">
+            {% comment %} IMG {% endcomment %}
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post Image" width="200" height="200">
+            {% endif %}
+            {% comment %} VIDEO {% endcomment %}
+            {% if post.video %}
+                <video width="320" height="240" controls>
+                    <source src="{{ post.video.url }}" type="video/mp4">
+                </video>
+            {% endif %}
+            </div>
+            {% comment %} lik&cmt {% endcomment %}
+            <div class="instagram-card-actions">
+            <button><a href="{% url 'likePost' post.id %}">Like</a>({{ post.like_count }})</button>
+            <button><a href="{% url 'commentPost' post.id %}">Comment</a></button>
+            </div>
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="login-btn" type="submit">Add Comment</button>
+                </form>
+            </div>
+            <div class="show-comments">
+            <h4>Comments</h4>
+            {% for comment in post.comments.all %}
+                <p><strong>{{ comment.user.username }}:</strong>{{ comment.content }}</p>
+            {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

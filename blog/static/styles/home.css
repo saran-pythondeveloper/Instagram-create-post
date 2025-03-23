@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    background-color: orange;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links{
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+
+}
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+}
+.nav-links li a:hover {
+    background-color: #8ca1c9;
+    border-radius: 4px;
+}
+.insta-post{
+    padding-top: 5px;
+    display: flex;
+    gap: 10px;
+}
+
+.instagram-card {
+    width: 200px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    /* margin: 20px auto; */
+    border: 1px solid #ddd;
+}
+.post-title{
+    padding-left: 3px;
+}
+.post-img-vid{
+    width: 100%;
+    height: 205px;
+    background-size: cover;
+    background-position: center;
+    border-top: 1px solid #ddd;
+}
+
+.instagram-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.instagram-card-actions button{
+    font-size: 18px;
+    width: 80px;
+    cursor: pointer;
+    background-color: #8ca1c9;
+    border: none;
+    border-radius: 3px;
+}
+.instagram-card-actions button a {
+    color: black;
+    list-style-type: none;
+    text-decoration: none;
+}
+.show-comments{
+    padding-left: 2px;
+}
+.show-comments p{
+    padding-left: 5px;
+}
+
+
