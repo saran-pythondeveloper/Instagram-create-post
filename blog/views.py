@@ -63,7 +63,7 @@ def logoutUser(request):
     logout(request)
     return redirect('/')
 
-# View for creating a new post
+# creating a new post
 @login_required
 def createPostPage(request):
     if request.method == 'POST':
@@ -78,7 +78,7 @@ def createPostPage(request):
         form = PostForm()
     return render(request, 'create_post.html', {'form': form})
 
-# View for liking a post
+# like a post
 @login_required
 def likePost(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -91,7 +91,7 @@ def likePost(request, post_id):
     
     return redirect('homePage')
 
-# View for commenting on a post
+# comment on a post
 @login_required
 def commentPost(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -109,6 +109,5 @@ def commentPost(request, post_id):
         form = CommentForm()
     
     return render(request, 'comment_post.html', {'form': form, 'post': post})
-    
-    
- 
+
+

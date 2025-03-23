@@ -44,13 +44,7 @@
             <button><a href="{% url 'likePost' post.id %}">Like</a>({{ post.like_count }})</button>
             <button><a href="{% url 'commentPost' post.id %}">Comment</a></button>
             </div>
-            <div>
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="login-btn" type="submit">Add Comment</button>
-                </form>
-            </div>
+
             <div class="show-comments">
             <h4>Comments</h4>
             {% for comment in post.comments.all %}
